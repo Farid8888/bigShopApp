@@ -70,6 +70,11 @@ const Board = ({ title, contents, index, isScrollable, isCombineEnabled, useClon
 		if(newTitle) {
 			const newColumns = {};
 			delete Object.assign(newColumns, columns, {[newTitle]: columns[title] })[title];
+			// const newCol= {...columns}
+			// const curArr = [...columns[title]]
+			// newCol[newTitle] = curArr
+			// delete newCol[title]
+			// console.log(newCol)
 			const newOrder = ordered.map(elm => {
 				if(elm === title) {
 					return newTitle

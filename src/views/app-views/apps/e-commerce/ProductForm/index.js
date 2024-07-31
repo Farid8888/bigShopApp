@@ -23,6 +23,7 @@ const ProductForm = props => {
 	const { mode = ADD, param } = props
 
 	const [form] = Form.useForm();
+	console.log(form.getFieldValue(),'ffffffff')
 	const [uploadedImg, setImage] = useState('')
 	const [uploadLoading, setUploadLoading] = useState(false)
 	const [submitLoading, setSubmitLoading] = useState(false)
@@ -71,6 +72,7 @@ const ProductForm = props => {
 				}
 				if(mode === EDIT) {
 					message.success(`Product saved`);
+					console.log(values,'vv')
 				}
 			}, 1500);
 		}).catch(info => {
@@ -79,6 +81,28 @@ const ProductForm = props => {
 			message.error('Please enter all required field ');
 		});
 	};
+
+	const items = [
+		{
+		  key: '1',
+		  label: 'General',
+		  children:<GeneralField 
+		  uploadedImg={uploadedImg} 
+		  uploadLoading={uploadLoading} 
+		  handleUploadChange={handleUploadChange}
+	  />,
+		},
+		{
+		  key: '2',
+		  label: 'Variaton',
+		  children: <VariationField />,
+		},
+		{
+		  key: '3',
+		  label: 'Shipping',
+		  children: <ShippingField />,
+		},
+	  ];
 
 	return (
 		<>
@@ -107,21 +131,7 @@ const ProductForm = props => {
 					</div>
 				</PageHeaderAlt>
 				<div className="container">
-					<Tabs defaultActiveKey="1" style={{marginTop: 30}}>
-						<TabPane tab="General" key="1">
-							<GeneralField 
-								uploadedImg={uploadedImg} 
-								uploadLoading={uploadLoading} 
-								handleUploadChange={handleUploadChange}
-							/>
-						</TabPane>
-						<TabPane tab="Variation" key="2">
-							<VariationField />
-						</TabPane>
-						<TabPane tab="Shipping" key="3">
-							<ShippingField />
-						</TabPane>
-					</Tabs>
+					<Tabs defaultActiveKey="1" items={items} style={{marginTop: 30}}/>
 				</div>
 			</Form>
 		</>

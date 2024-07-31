@@ -143,8 +143,27 @@ const Orders = () => {
 		}
 	};
 
+
+	// const objHandler =(itm,value)=>{
+	// 	for(let key in itm){
+	// 		const newItem = itm[key].toString().toUpperCase().includes(value.toString().toUpperCase())
+	// 		console.log(newItem,value)
+    //          if(newItem){
+	// 			return true
+	// 		 }
+		
+	// 	   }
+	
+	// }
+	// const searchHandler =(arr,val)=>{
+	// 	const newArr=arr.filter(element=>objHandler(element,val))
+
+    //  return newArr
+	// }
 	const onSearch = e => {
 		const value = e.currentTarget.value
+		// const dat = searchHandler(value ?  list : OrderListData,value)
+	
 		const searchArray = e.currentTarget.value? list : OrderListData
 		const data = utils.wildCardSearch(searchArray, value)
 		setList(data)

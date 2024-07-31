@@ -162,6 +162,7 @@ export class Billing extends Component {
       }
     ]
     const randomCardType = cardType[Math.floor(Math.random() * cardType.length)];
+    console.log(randomCardType)
     const reg = /\b(?:\d{4}[ -]?){3}(?=\d{4}\b)/gm
     const substr = `•••• •••• •••• `
     const cardInfo = {
@@ -200,7 +201,7 @@ export class Billing extends Component {
 		return (
 			<>
 				<h2 className="mb-4">Billing</h2>
-				<Table locale={locale} dataSource={creditCards} rowSelection={rowSelection} pagination={false}>
+				<Table locale={locale} dataSource={creditCards} rowSelection={rowSelection} pagination={false} rowKey='key'>
 					<Column 
             title="Card type" 
             key="cardType" 

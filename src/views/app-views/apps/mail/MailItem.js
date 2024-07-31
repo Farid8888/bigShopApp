@@ -29,6 +29,8 @@ export class MailItem extends Component {
 		})
 	}
 
+
+
 	formatBody = body => {
 		return body.replace(/<(?:.|\n)*?>/gm, ' ');
 	}
@@ -203,6 +205,7 @@ export class MailItem extends Component {
 				colSpan: 4,
 				dataIndex: 'name',
 				className: 'mail-list-sender',
+				
 				render: (_, elm) => (
 					<div className="d-flex align-items-center">
 						<div 

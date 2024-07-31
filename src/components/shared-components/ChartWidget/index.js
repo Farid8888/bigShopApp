@@ -37,8 +37,10 @@ const getChartTypeDefaultOption = type => {
 const ChartWidget = ({title, series, width, height, xAxis, customOptions, card, type, extra}) =>  {
 	let options = getChartTypeDefaultOption(type)
 	const isMobile = window.innerWidth < 768 
+	
 	const setLegendOffset = () => {
 		if(chartRef.current) {
+			
 			const lengend = chartRef.current.querySelectorAll('div.apexcharts-legend')[0]
 			lengend.style.marginRight = `${isMobile ? 0 : extraRef.current?.offsetWidth}px`
 			if (isMobile) {

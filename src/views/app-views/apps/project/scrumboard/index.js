@@ -25,6 +25,7 @@ const ScrumboardWrapper = props => {
 	} = useContext(ScrumboardContext)
 
 	const onDragEnd = result => {
+		console.log(result,'result')
     if (result.combine) {
       if (result.type === 'COLUMN') {
         const shallow = [...ordered];
@@ -35,11 +36,13 @@ const ScrumboardWrapper = props => {
 
       const column = columns[result.source.droppableId];
       const withQuoteRemoved = [...column];
+	
       withQuoteRemoved.splice(result.source.index, 1);
       const newColumns = {
         ...columns,
         [result.source.droppableId]: withQuoteRemoved,
 			};
+			
 			updateColumns(newColumns)
       return;
     }
